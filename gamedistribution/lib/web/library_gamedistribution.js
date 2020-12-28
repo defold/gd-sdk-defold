@@ -20,10 +20,10 @@ var GameDistributionLibrary = {
                 console.log("No listener set");
                 return;
             }
-            dynCall("vii", Context.listener, [
+            {{{ makeDynCall("vii", "Context.listener") }}} (
                 allocate(intArrayFromString(event.name), "i8", ALLOC_STACK),
                 allocate(intArrayFromString(event.message), "i8", ALLOC_STACK)
-            ]);
+            );
         };
 
         // https://gamedistribution.com/sdk/html5
