@@ -15,7 +15,7 @@ height = 1136
 shared_state = 1
 
 [library]
-include_dirs = gdsdk
+include_dirs = gamedistribution
 
 [collection_proxy]
 max_count = 9
