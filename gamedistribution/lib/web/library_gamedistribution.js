@@ -16,11 +16,12 @@ var GameDistributionLibrary = {
     		},
     	};
         window["GD_OPTIONS"]["onEvent"] = function(event) {
-            if (!Context.listener) {
+            var listener = Context.listener;
+            if (!listener) {
                 console.log("No listener set");
                 return;
             }
-            {{{ makeDynCall("vii", "Context.listener") }}} (
+            {{{ makeDynCall("vii", "listener") }}} (
                 allocate(intArrayFromString(event.name), "i8", ALLOC_STACK),
                 allocate(intArrayFromString(event.message), "i8", ALLOC_STACK)
             );
@@ -40,9 +41,21 @@ var GameDistributionLibrary = {
         Context.listener = listener;
     },
 
-    GameDistribution_PlatformShowAd: function() {
+    GameDistribution_PlatformShowDisplayAd: function(containerId) {
         if (typeof gdsdk !== 'undefined' && gdsdk.showAd !== 'undefined') {
-            gdsdk.showAd();
+            gdsdk.showAd(gdsdk.AdType.Display, { containerId: UTF8ToString(containerId) });
+        }
+    },
+
+    GameDistribution_PlatformShowInterstitialAd: function() {
+        if (typeof gdsdk !== 'undefined' && gdsdk.showAd !== 'undefined') {
+            gdsdk.showAd(gdsdk.AdType.Interstitial);
+        }
+    },
+
+    GameDistribution_PlatformShowRewardedAd: function() {
+        if (typeof gdsdk !== 'undefined' && gdsdk.showAd !== 'undefined') {
+            gdsdk.showAd(gdsdk.AdType.Rewarded);
         }
     },
 

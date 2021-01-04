@@ -86,10 +86,25 @@ static int GameDistribution_SetListener(lua_State* L)
 	return 0;
 }
 
-static int GameDistribution_ShowAd(lua_State* L)
+static int GameDistribution_ShowRewardedAd(lua_State* L)
 {
 	DM_LUA_STACK_CHECK(L, 0);
-	GameDistribution_PlatformShowAd();
+	GameDistribution_PlatformShowRewardedAd();
+	return 0;
+}
+
+static int GameDistribution_ShowDisplayAd(lua_State* L)
+{
+	DM_LUA_STACK_CHECK(L, 0);
+	const char* containerId = luaL_checkstring(L, 1);
+	GameDistribution_PlatformShowDisplayAd(containerId);
+	return 0;
+}
+
+static int GameDistribution_ShowInterstitialAd(lua_State* L)
+{
+	DM_LUA_STACK_CHECK(L, 0);
+	GameDistribution_PlatformShowInterstitialAd();
 	return 0;
 }
 
@@ -104,7 +119,9 @@ static int GameDistribution_OpenConsole(lua_State* L)
 static const luaL_reg Module_methods[] =
 {
 	{"set_listener", GameDistribution_SetListener},
-	{"show_ad", GameDistribution_ShowAd},
+	{"show_rewarded_ad", GameDistribution_ShowRewardedAd},
+	{"show_interstitial_ad", GameDistribution_ShowInterstitialAd},
+	{"show_display_ad", GameDistribution_ShowDisplayAd},
 	{"open_console", GameDistribution_OpenConsole},
 	{0, 0}
 };

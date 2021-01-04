@@ -23,15 +23,55 @@
 
 #*****************************************************************************************************
 
-  - name: show_ad
+  - name: show_interstitial_ad
     type: function
-    desc: Show an ad
+    desc: Show an interstitial ad
+
+    examples:
+      - desc: |-
+            ```lua
+            gdsdk.show_interstitial_ad()
+            ```
+
+#*****************************************************************************************************
+
+  - name: show_rewarded_ad
+    type: function
+    desc: Show a rewarded ad
+
+    examples:
+      - desc: |-
+            ```lua
+            gdsdk.show_rewarded_ad()
+            ```
+
+#*****************************************************************************************************
+
+  - name: show_display_ad
+    type: function
+    desc: Show a display/banner ad
+    parameters:
+      - name: container_id
+        type: string
+        desc: id of the div in which to load the ad.
+
+    examples:
+      - desc: |-
+            ```lua
+            gdsdk.show_display_ad("bottom-ad-container")
+            ```
 
 #*****************************************************************************************************
 
   - name: open_console
     type: function
     desc: This will open a tiny toolbar, which allows you to call fake advertisements, making the implementation much easier and reliable. Clear your localStorage to disable debugging.
+
+    examples:
+      - desc: |-
+            ```lua
+            gdsdk.open_console()
+            ```
 
 #*****************************************************************************************************
 
