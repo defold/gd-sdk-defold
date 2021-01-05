@@ -53,12 +53,28 @@
     parameters:
       - name: container_id
         type: string
-        desc: id of the div in which to load the ad.
+        desc: id of the div in which to load the ad. This will set the CSS display style of the div to 'block'.
 
     examples:
       - desc: |-
             ```lua
             gdsdk.show_display_ad("bottom-ad-container")
+            ```
+
+#*****************************************************************************************************
+
+  - name: hide_display_ad
+    type: function
+    desc: Hide a display/banner ad
+    parameters:
+      - name: container_id
+        type: string
+        desc: id of the div to hide. This sets the CSS display style to 'none' for the div.
+
+    examples:
+      - desc: |-
+            ```lua
+            gdsdk.hide_display_ad("bottom-ad-container")
             ```
 
 #*****************************************************************************************************
