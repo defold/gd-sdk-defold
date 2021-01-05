@@ -101,6 +101,14 @@ static int GameDistribution_ShowDisplayAd(lua_State* L)
 	return 0;
 }
 
+static int GameDistribution_HideDisplayAd(lua_State* L)
+{
+	DM_LUA_STACK_CHECK(L, 0);
+	const char* containerId = luaL_checkstring(L, 1);
+	GameDistribution_PlatformHideDisplayAd(containerId);
+	return 0;
+}
+
 static int GameDistribution_ShowInterstitialAd(lua_State* L)
 {
 	DM_LUA_STACK_CHECK(L, 0);
@@ -122,6 +130,7 @@ static const luaL_reg Module_methods[] =
 	{"show_rewarded_ad", GameDistribution_ShowRewardedAd},
 	{"show_interstitial_ad", GameDistribution_ShowInterstitialAd},
 	{"show_display_ad", GameDistribution_ShowDisplayAd},
+	{"hide_display_ad", GameDistribution_HideDisplayAd},
 	{"open_console", GameDistribution_OpenConsole},
 	{0, 0}
 };

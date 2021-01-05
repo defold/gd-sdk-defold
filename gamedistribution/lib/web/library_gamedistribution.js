@@ -42,9 +42,26 @@ var GameDistributionLibrary = {
     },
 
     GameDistribution_PlatformShowDisplayAd: function(containerId) {
-        if (typeof gdsdk !== 'undefined' && gdsdk.showAd !== 'undefined') {
-            gdsdk.showAd(gdsdk.AdType.Display, { containerId: UTF8ToString(containerId) });
+        var elementId = UTF8ToString(containerId);
+        var element = document.getElementById(elementId);
+        if (typeof element === 'undefined') {
+            console.log("Unable to find element with id " + elementId);
+            return;
         }
+        element.style.display = "block";
+        if (typeof gdsdk !== 'undefined' && gdsdk.showAd !== 'undefined') {
+            gdsdk.showAd(gdsdk.AdType.Display, { containerId: elementId });
+        }
+    },
+
+    GameDistribution_PlatformHideDisplayAd: function(containerId) {
+        var elementId = UTF8ToString(containerId);
+        var element = document.getElementById(elementId);
+        if (typeof element === 'undefined') {
+            console.log("Unable to find element with id " + elementId);
+            return;
+        }
+        element.style.display = "none";
     },
 
     GameDistribution_PlatformShowInterstitialAd: function() {
