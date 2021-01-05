@@ -8,13 +8,13 @@ var GameDistributionLibrary = {
 
     GameDistribution_PlatformInit: function(gameId, debug) {
         window["GD_OPTIONS"] = {
-    		"gameId": UTF8ToString(gameId),
-    		"advertisementSettings": {
-    			"debug": (debug == 1), // Enable IMA SDK debugging.
-    			"autoplay": false, // Don't use this because of browser video autoplay restrictions.
-    			"locale": "en", // Locale used in IMA SDK, this will localize the "Skip ad after x seconds" phrases.
-    		},
-    	};
+            "gameId": UTF8ToString(gameId),
+            "advertisementSettings": {
+                "debug": (debug == 1), // Enable IMA SDK debugging.
+                "autoplay": false, // Don't use this because of browser video autoplay restrictions.
+                "locale": "en", // Locale used in IMA SDK, this will localize the "Skip ad after x seconds" phrases.
+            },
+        };
         window["GD_OPTIONS"]["onEvent"] = function(event) {
             var listener = Context.listener;
             if (!listener) {
