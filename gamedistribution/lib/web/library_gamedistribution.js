@@ -50,7 +50,9 @@ var GameDistributionLibrary = {
         }
         element.style.display = "block";
         if (typeof gdsdk !== 'undefined' && gdsdk.showAd !== 'undefined') {
-            gdsdk.showAd(gdsdk.AdType.Display, { containerId: elementId });
+            gdsdk.showAd(gdsdk.AdType.Display, { containerId: elementId })
+                .then(() => console.info('showAd(AdType.Display) resolved.'))
+                .catch(error => console.error(error));
         }
     },
 
@@ -66,13 +68,17 @@ var GameDistributionLibrary = {
 
     GameDistribution_PlatformShowInterstitialAd: function() {
         if (typeof gdsdk !== 'undefined' && gdsdk.showAd !== 'undefined') {
-            gdsdk.showAd(gdsdk.AdType.Interstitial);
+            gdsdk.showAd(gdsdk.AdType.Interstitial)
+                .then(() => console.info('showAd(AdType.Interstitial) resolved.'))
+                .catch(error => console.error(error));
         }
     },
 
     GameDistribution_PlatformShowRewardedAd: function() {
         if (typeof gdsdk !== 'undefined' && gdsdk.showAd !== 'undefined') {
-            gdsdk.showAd(gdsdk.AdType.Rewarded);
+            gdsdk.showAd(gdsdk.AdType.Rewarded)
+                .then(() => console.info('showAd(AdType.Rewarded) resolved.'))
+                .catch(error => console.error(error));
         }
     },
 
