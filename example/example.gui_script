@@ -10,8 +10,10 @@ end
 
 function on_input(self, action_id, action)
 	if action.pressed then
-		if gui.pick_node(gui.get_node("show_ad"), action.x, action.y) then
-			gdsdk.show_ad()
+		if gui.pick_node(gui.get_node("show_interstitial_ad"), action.x, action.y) then
+			gdsdk.show_interstitial_ad()
+		elseif gui.pick_node(gui.get_node("show_rewarded_ad"), action.x, action.y) then
+			gdsdk.show_rewarded_ad()
 		elseif gui.pick_node(gui.get_node("open_console"), action.x, action.y) then
 			gdsdk.open_console()
 		end
