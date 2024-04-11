@@ -22,8 +22,8 @@ var GameDistributionLibrary = {
                 return;
             }
             {{{ makeDynCall("vii", "listener") }}} (
-                allocate(intArrayFromString(event.name), "i8", ALLOC_STACK),
-                allocate(intArrayFromString(event.message), "i8", ALLOC_STACK)
+                stringToUTF8OnStack(event.name),
+                stringToUTF8OnStack(event.message)
             );
         };
 
@@ -91,4 +91,4 @@ var GameDistributionLibrary = {
 
 autoAddDeps(GameDistributionLibrary, "$Context");
 
-mergeInto(LibraryManager.library, GameDistributionLibrary);
+addToLibrary(GameDistributionLibrary);
